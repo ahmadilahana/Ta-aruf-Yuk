@@ -100,11 +100,11 @@ class Read extends Koneksi
             $stmt = $this->get_data();
             $jns_kel = $stmt['jns_kel'];
             if ($jns_kel == 'P') {
-                $sql1 =  "SELECT * FROM biodata_diri a, akun b where a.jns_kel='$jns_kel' and a.id_user=b.id_user";
+                $sql1 =  "SELECT * FROM biodata_diri a, akun b where a.jns_kel='L' and a.id_user=b.id_user";
                 $stmt1 = $this->prepare($sql1);
                 $stmt1 = $this->get_array();
             } else {
-                $sql1 =  "SELECT * FROM biodata_diri a, akun b where a.jns_kel='$jns_kel' and a.id_user=b.id_user";
+                $sql1 =  "SELECT * FROM biodata_diri a, akun b where a.jns_kel='P' and a.id_user=b.id_user";
                 $stmt1 = $this->prepare($sql1);
                 $stmt1 = $this->get_array();
             }
