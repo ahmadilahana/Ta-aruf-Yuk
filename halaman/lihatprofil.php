@@ -25,7 +25,7 @@ $dataR = $read->rProfile($_SESSION['user']['id_user']);
                             <p><?= $dataR['stat_nikah'] ?></p>
                         </li>
                         <li class=" list-inline-item">
-                            <p><?= ($dataR['jns_kel']=='L') ? 'Laki-laki' : 'Perempuan' ; ?></p>
+                            <p><?= ($dataR['jns_kel'] == 'L') ? 'Laki-laki' : 'Perempuan'; ?></p>
                         </li>
                     </ul>
                     <ul class=" list-unstyled">
@@ -56,7 +56,7 @@ $dataR = $read->rProfile($_SESSION['user']['id_user']);
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Alamat Asal</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['alamat_skr'] . ' ' . $dataR['kota_skr'] . ' ' . $dataR['provinsi_skr'] ?></p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['alamat_asl'] . ' ' . $dataR['kota_asl'] . ' ' . $dataR['provinsi_asl'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Suku</h6>
