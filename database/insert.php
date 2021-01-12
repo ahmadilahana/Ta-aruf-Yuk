@@ -4,7 +4,7 @@ require_once 'koneksi.php';
 
 class Insert extends Koneksi
 {
-    public function iAkun($id,$email,$pass,$nama,$jns_kel,$tgl_lahir){
+    public function iAkun($id, $email, $pass,$nama, $jns_kel, $tgl_lahir){
         try {
             $sql2 = "INSERT INTO `akun` values ('$id', '$email', '$pass', '$nama')";
             $stmt2 = $this->prepare($sql2);
