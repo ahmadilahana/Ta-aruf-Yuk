@@ -87,6 +87,20 @@ class Read extends Koneksi
             return 'Masalah read Pendidikan: ' . $e->getMessage();
         }
     }
+    public function rUser($id){
+        try {
+            $sql = "SELECT jns_kel FROM biodata_diri where id_user='$id'";
+            $stmt = $this->prepare($sql);
+            $stmt = $this->get_data();
+            $jns_kel = $stmt['jns_kel'];
+            // $sql1 = = "SELECT * FROM biodata_diri a, akun b where a.jns_kel='$jns_kel' and a.id_user=b.id_user";
+            // $stmt1 = $this->prepare($sql1);
+            // $stmt1 = $this->get_array();
+            return $jns_kel;
+        } catch (PDOException $e) {
+            return 'Masalah read Pendidikan: ' . $e->getMessage();
+        }
+    }
 }
 // $read = new Read;
 // print_r($read->rProfile(3));
