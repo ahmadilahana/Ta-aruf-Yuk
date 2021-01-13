@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="pr-2 pt-2 pl-2 w-100" style="height: 30%;">
-                    <a href="?page=lihatprofile-lain&menu=lain">
+                    <a href="?page=lihatprofile-lain&menu=lain&id=<?= $user['id_user'] ?>">
                         <h5 class="m-0 text-dark text-truncate" style="font-size: 20px;"><i class="fas fa-circle text-success" style="font-size: 15px;"></i> <?= $user['nama'] ?></h5>
                         <p class="m-0 text-dark" style="font-size: 14px;">Kota, Provinsi | tanggal lahir</p>
                     </a>

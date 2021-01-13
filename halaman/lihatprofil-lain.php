@@ -6,6 +6,13 @@
         </div>
     </div>
 </section>
+<?php
+require_once 'database/read.php';
+$read = new Read;
+$dataR = $read->rProfile($_GET['id']);
+// print_r($dataR);
+
+?>
 <div class="container-fluid " style="margin-bottom: 70px;">
     <div class="row justify-content-center">
         <!--FOTO PROFILE DAN NAMA PENGGUNA-->
@@ -13,31 +20,20 @@
             <div class="row justify-content-md-center mt-2">
                 <img src="img/profile1.png" class="col-auto" alt="" height="200px" width="auto">
                 <div class="col-12 text-center mt-2">
-                    <h4 class="mb-0"><?= $_SESSION['user']['nama'] ?></h4>
+                    <h4 class="mb-0"><?= $dataR['nama'] ?></h4>
                     <ul class=" list-inline mb-0" style="height: 30px;">
                         <li class=" list-inline-item">
-                            <p>Status Nikah</p>
+                            <p><?= $dataR['stat_nikah'] ?></p>
                         </li>
                         <li class=" list-inline-item">
-                            <p>Laki-laki</p>
+                            <p><?= ($dataR['jns_kel'] == 'L') ? 'Laki-laki' : 'Perempuan'; ?></p>
                         </li>
                     </ul>
                     <ul class=" list-unstyled">
-                        <li><?= $_SESSION['user']['email'] ?></li>
-                        <li>Nomor WA/Hp</li>
-                        <li>Sosial Media</li>
+                        <li><?= $dataR['email'] ?></li>
+                        <li><?= $dataR['no_hp'] ?></li>
+                        <li><?= $dataR['sosmed'] ?></li>
                     </ul>
-                    <div class="pr-2 pt-2 pl-2 text-center">
-                        <a type="button" class="btn btn-link p-1">
-                            <h3 class=" text-success" data-toggle="tooltip" data-placement="top" title="Favorit"><i class="fas fa-star"></i></h3>
-                        </a>
-                        <a type="button" class="btn btn-link p-1">
-                            <h3 data-toggle="tooltip" data-placement="top" title="Pesan"><i class="fas fa-comment"></i></h3>
-                        </a>
-                        <a type="button" class="btn btn-link p-1">
-                            <h3 data-toggle="tooltip" data-placement="top" title="Blokir"><i class="fas fa-ban"></i></h3>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -53,31 +49,31 @@
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Tempat, Tanggal Lahir</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Semarang, 1 Mei 2020</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['tmp_lahir'] ?>, <?= $dataR['tgl_lahir'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Alamat Sekarang</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Jalan Karang Rejo dlm v No.37A RT 004/RW 007 Srondol Wetan, Banyumanik, Semarang</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['alamat_skr'] . ' ' . $dataR['kota_skr'] . ' ' . $dataR['provinsi_skr'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Alamat Asal</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Jalan Karang Rejo dlm v No.37A RT 004/RW 007 Srondol Wetan, Banyumanik, Semarang</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['alamat_asl'] . ' ' . $dataR['kota_asl'] . ' ' . $dataR['provinsi_asl'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Suku</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Jawa</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['suku'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Gol. Darah</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">B</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['gol_darah'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Nama Ayah</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Ayah</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['nm_ayah'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info ">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Nama Ibu</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Ibu</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['nm_ibu'] ?></p>
                 </div>
             </div>
         </div>
@@ -89,39 +85,39 @@
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Bentuk Fisik</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Normal</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['b_fisik'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Warna Kulit</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Sawo Matang</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['w_kulit'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Tipe Rambut</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Bergelombang</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['t_rambut'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Warna Rambut</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Hitam</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['w_rambut'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Warna Mata</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Hitam</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['w_mata'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Cacat Fisik</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">-</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['c_fisik'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Tinggi Badan</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">182 cm</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['t_badan'] ?> cm</p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Berat Badan</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">70 Kg</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['b_badan'] ?> Kg</p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Seni Tubuh</h6>
-                    <p class="col-8 align-self-center mt-2 mb-2">Tidak Ada</p>
+                    <p class="col-8 align-self-center mt-2 mb-2"><?= $dataR['s_tubuh'] ?></p>
                 </div>
                 <div class="row col-12 m-0 border-bottom border-info">
                     <h6 class="col-4 align-self-center mt-2 mb-2">Dokumen Pendukung</h6>

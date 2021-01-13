@@ -298,7 +298,7 @@
         $update = new Update;
         $update->uBiodata($id, $jns_kel, $tmp_lahir, $tgl_lahir, $almt_skr, $kota_skr, $prov_skr, $almt_asl, $kota_asl, $prov_asl, $suku, $gol_darah, $nm_ayah, $nm_ibu, $stat_nikah, $lam_surat, $foto_ktp, $no_hp, $sosmed);
         $update->uGamDiri($id, $b_fisik, $w_kulit, $t_rambut, $w_rambut, $w_mata, $c_fisik, $t_badan, $b_badan, $s_tubuh);
-        echo "<script>window.location.replace('?page=editprofil&menu=true')</script>";
+        echo "<script>window.location.replace('?page=lihatprofil&menu=true')</script>";
     }
     ?>
 </div>

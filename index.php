@@ -63,6 +63,8 @@ if (empty($_SESSION['user'])) {
                 include 'halaman/editFoto.php';
             } elseif ($_GET['page'] == 'minat') {
                 include 'halaman/minat.php';
+            } elseif ($_GET['page'] == 'minat-lain') {
+                include 'halaman/minat-lain.php';
             } elseif ($_GET['page'] == 'editminat') {
                 include 'halaman/editMinat.php';
             } elseif ($_GET['page'] == 'pekerjaan') {

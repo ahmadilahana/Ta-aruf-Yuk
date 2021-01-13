@@ -3,6 +3,12 @@
         <h2 class="align-self-center text-white">Pekerjaan</h2>
     </div>
     <table class="table table-striped mt-4">
+        <?php
+        require_once 'database/read.php';
+        $read = new Read;
+        $dataR = $read->rPekerjaan($_GET['id']);
+        // print_r($dataR);
+        ?>
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -12,18 +18,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Choco Friends Delicious</td>
-                <td>Sales</td>
-                <td>2020</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>SMA PGRI 2 KAJEN</td>
-                <td>Staf TU</td>
-                <td>2019</td>
-            </tr>
+            <?php
+            foreach ($dataR as $key => $value) {
+                // print_r($key);
+            ?>
+                <tr>
+                    <th scope="row"><?= $key + 1 ?></th>
+                    <td><?= $value['nm_perusahaan'] ?></td>
+                    <td><?= $value['jabatan'] ?></td>
+                    <td><?= $value['periode'] ?></td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
 </section>

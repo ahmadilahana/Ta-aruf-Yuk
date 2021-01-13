@@ -22,17 +22,14 @@
                     <td><input type="text" name="jurusan[]" id="" class="form-control" value="" autocomplete="off"></td>
                     <td><input type="text" name="tahun[]" id="" class="form-control" value="" autocomplete="off"></td>
                     <td>
-                        <button type="button" name="hapus" onclick="hapuscolom(this.value)" class="btn btn-danger"
-                            value="1" data-toggle="tooltip" data-placement="top" title="Hapus Data"><i
-                                class="far fa-times-circle"></i></button>
+                        <button type="button" name="hapus" onclick="hapuscolom(this.value)" class="btn btn-danger" value="1" data-toggle="tooltip" data-placement="top" title="Hapus Data"><i class="far fa-times-circle"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
         <div class="d-flex flex-row-reverse pr-5">
             <button type="submit" name="simpan" class="btn btn-info w-25" value="haloo">Simpan</button>
-            <button type="button" name="tambah" id="btn-tambah" class="btn btn-info w-25 mr-2" value="1"><i
-                    class="fas fa-plus"></i> Kolom</i></button>
+            <button type="button" name="tambah" id="btn-tambah" class="btn btn-info w-25 mr-2" value="1"><i class="fas fa-plus"></i> Kolom</i></button>
         </div>
     </form>
     <?php
@@ -44,15 +41,16 @@
         // print_r($jurusan);
         require_once 'database/insert.php';
         $insert = new Insert;
-        $dat = $insert->iPendidikan($id,$nm_sekolah,$jurusan,$th_ajaran);
-        print_r($dat);
+        $dat = $insert->iPendidikan($id, $nm_sekolah, $jurusan, $th_ajaran);
+        // print_r($dat);
+        echo "<script>window.location.replace('?page=pendidikan&menu=true')</script>";
     }
     ?>
 </section>
 <script src="js/jquery.js"></script>
 <script>
-    $(document).ready(function () {
-        $('#btn-tambah').on('click', function () {
+    $(document).ready(function() {
+        $('#btn-tambah').on('click', function() {
             no = parseInt($('#btn-tambah').val());
             no = no + 1;
             console.log(no);
