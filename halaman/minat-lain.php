@@ -1,9 +1,6 @@
 <section class="container-fluid mb-5">
     <div class=" d-flex justify-content-between bg-info rounded mt-3 pr-3 pl-3">
         <h2 class="align-self-center text-white">Minat dan Kepribadian</h2>
-        <div class="d-flex">
-            <a href="?page=editminat&menu=true" class="btn btn-light btn-sm align-self-center">Edit Data</a>
-        </div>
     </div>
     <div class="container mt-4">
         <div class="row">
