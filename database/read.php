@@ -113,6 +113,27 @@ class Read extends Koneksi
             return 'Masalah read Pendidikan: ' . $e->getMessage();
         }
     }
+    public function rUserFilter($id, $kota, $tahun)
+    {
+        try {
+            $sql = "SELECT jns_kel FROM biodata_diri where id_user='$id'";
+            $stmt = $this->prepare($sql);
+            $stmt = $this->get_data();
+            $jns_kel = $stmt['jns_kel'];
+            if ($jns_kel == 'P') {
+                $sql1 =  "SELECT * FROM akun a, biodata_diri b, (SELECT YEAR(tgl_lahir) as tahun, id_user FROM biodata_diri) c WHERE a.id_user=b.id_user and b.jns_kel='P' and c.id_user=b.id_user and b.kota_skr LIKE '%" . $kota . "%' and c.tahun LIKE '" . $tahun . "%'";
+                $stmt1 = $this->prepare($sql1);
+                $stmt1 = $this->get_array();
+            } else {
+                $sql1 =  "SELECT * FROM akun a, biodata_diri b, (SELECT YEAR(tgl_lahir) as tahun, id_user FROM biodata_diri) c WHERE a.id_user=b.id_user and b.jns_kel='L' and c.id_user=b.id_user and b.kota_skr LIKE '%" . $kota . "%' and c.tahun LIKE '" . $tahun . "%'";
+                $stmt1 = $this->prepare($sql1);
+                $stmt1 = $this->get_array();
+            }
+            return $stmt1;
+        } catch (PDOException $e) {
+            return 'Masalah read Pendidikan: ' . $e->getMessage();
+        }
+    }
 }
 // $read = new Read;
 // print_r($read->rProfile(3));

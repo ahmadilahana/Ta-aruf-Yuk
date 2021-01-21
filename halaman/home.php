@@ -8,12 +8,12 @@
     <div class=" d-flex justify-content-between bg-light rounded pr-3 pl-3 mt-2">
         <input type="text" class="form-control m-2" id="th_lahir" placeholder="Tahun Kelahiran">
         <input type="text" class="form-control m-2" id="kota" placeholder="Kota Tinggal">
-        <input type="button" onclick="filterData()" class="form-control m-2 w-25 btn btn-success" value="Cari">
+        <input type="button" onclick="filterData()" data-baris="12" id="btn-cari" class="form-control m-2 w-25 btn btn-success" value="Cari">
     </div>
 </section>
 
 <div class="container mb-5">
-    <div class="row mt-4 p-0">
+    <div class="row mt-4 p-0" id="tabel-user">
         <?php
 
         require 'database/read.php';
@@ -57,8 +57,22 @@
 <script src="js/jquery.js"></script>
 <script>
     function filterData() {
-        th_lahir = $('#th_lahir').val();
-        kota = $('#kota').val();]
+        th_lahir = $('#th_lahir').val().toLowerCase();
+        kota = $('#kota').val().toLowerCase();
+        $.ajax({
+            type: "post",
+            url: "data_tabel/dataHomeUser.php",
+            data: {
+                th: th_lahir,
+                kt: kota
+            },
+            dataType: "text",
+            success: function(response) {
+                console.log(response);
+                $('#tabel-user').html(response);
+            }
+        });
+        // console.log($('.filter-box').text());
 
     }
 </script>

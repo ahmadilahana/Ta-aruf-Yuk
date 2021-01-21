@@ -44,7 +44,7 @@ if (empty($_SESSION['user'])) {
             ?>
         </div>
         <!--HALAMAN-->
-        <section>
+        <section id="body">
             <?php
             error_reporting(0);
             if (empty($_GET['page'])) {
